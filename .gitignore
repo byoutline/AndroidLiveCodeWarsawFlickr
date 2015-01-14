@@ -26,7 +26,6 @@ build/
 *.iws
 *.ipr
 *.swp
-.gradle
 
 # Netbeans
 .nb-gradle
