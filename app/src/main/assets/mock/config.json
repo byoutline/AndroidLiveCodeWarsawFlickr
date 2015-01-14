@@ -1,0 +1,18 @@
+{
+    "requests": [
+        {
+            "method": "GET",
+            "path": {
+                "base": "/",
+                "queries": {
+                    "method": "\\Qflickr.photos.getRecent\\E",
+                    "extras": ".*",
+                    "format": "json",
+                    "api_key": ".*",
+                    "nojsoncallback": ".*"
+                }
+            },
+            "response file": "recent_photos.json"
+        }
+    ]
+}
