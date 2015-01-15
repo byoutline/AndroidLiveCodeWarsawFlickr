@@ -5,7 +5,11 @@
     elevation="4dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="?attr/actionBarSize"
-    android:title="Flickr example">
+    android:minHeight="?attr/actionBarSize">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/toolbar_title" />
 
 </android.support.v7.widget.Toolbar>
