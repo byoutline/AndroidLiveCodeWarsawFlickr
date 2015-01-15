@@ -3,10 +3,8 @@ package com.byoutline.androidlivecodewarsawflickr.activities;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -14,26 +12,18 @@ import com.byoutline.androidlivecodewarsawflickr.R;
 import com.byoutline.androidlivecodewarsawflickr.fragments.NavigationDrawerFragment;
 import com.byoutline.androidlivecodewarsawflickr.fragments.PlaceholderFragment;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
-
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
 
-    @InjectView(R.id.toolbar)
-    Toolbar toolbar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -51,20 +41,6 @@ public class MainActivity extends ActionBarActivity
         fragmentManager.beginTransaction()
                 .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
                 .commit();
-    }
-
-    public void onSectionAttached(int number) {
-        switch (number) {
-            case 1:
-                toolbar.setTitle(R.string.title_section1);
-                break;
-            case 2:
-                toolbar.setTitle(R.string.title_section2);
-                break;
-            case 3:
-                toolbar.setTitle(R.string.title_section3);
-                break;
-        }
     }
 
     @Override
@@ -93,5 +69,4 @@ public class MainActivity extends ActionBarActivity
 
         return super.onOptionsItemSelected(item);
     }
-
 }
