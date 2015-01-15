@@ -3,7 +3,7 @@ package com.byoutline.androidlivecodewarsawflickr.api;
 import retrofit.RequestInterceptor;
 
 /**
- * Created by nait on 10.01.15.
+ * Created by Sebastian Kacprzak on 10.01.15.
  */
 public class FlickrRequestInterceptor implements RequestInterceptor {
     @Override

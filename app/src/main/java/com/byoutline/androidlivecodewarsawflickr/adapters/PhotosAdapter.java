@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 /**
- * Created by nait on 11.01.15.
+ * Created by Sebastian Kacprzak on 11.01.15.
  */
 public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder> {
     private final Provider<Context> contextProvider;
