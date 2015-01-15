@@ -8,7 +8,7 @@ import retrofit.http.Query;
 /**
  * Created by Sebastian Kacprzak on 10.01.15.
  */
-public interface ApiClient {
+public interface FlickrService {
     @GET("/?method=flickr.photos.getRecent")
     FlickrResponse getRandom(@Query("extras") String extras);
 }

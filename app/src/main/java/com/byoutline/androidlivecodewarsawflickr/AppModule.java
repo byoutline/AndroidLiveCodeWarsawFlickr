@@ -3,7 +3,7 @@ package com.byoutline.androidlivecodewarsawflickr;
 import android.content.Context;
 
 import com.byoutline.androidlivecodewarsawflickr.adapters.PhotosAdapter;
-import com.byoutline.androidlivecodewarsawflickr.api.ApiClient;
+import com.byoutline.androidlivecodewarsawflickr.api.FlickrService;
 import com.byoutline.androidlivecodewarsawflickr.api.ApiConstants;
 import com.byoutline.androidlivecodewarsawflickr.api.FlickrRequestInterceptor;
 import com.byoutline.androidlivecodewarsawflickr.fragments.PlaceholderFragment;
@@ -40,7 +40,7 @@ public class AppModule {
 
     @Singleton
     @Provides
-    ApiClient providesApiClient(FlickrRequestInterceptor requestInterceptor, GsonConverter gsonConverter) {
+    FlickrService providesApiClient(FlickrRequestInterceptor requestInterceptor, GsonConverter gsonConverter) {
         RestAdapter.Builder builder = new RestAdapter.Builder();
         builder.setEndpoint(ApiConstants.getApiPath());
 
@@ -51,7 +51,7 @@ public class AppModule {
                 .setConverter(gsonConverter)
                 .setClient(client)
                 .setRequestInterceptor(requestInterceptor);
-        return builder.build().create(ApiClient.class);
+        return builder.build().create(FlickrService.class);
     }
 
     @Singleton
@@ -62,8 +62,8 @@ public class AppModule {
 
     @Singleton
     @Provides
-    PhotoManager providesPhotosManager(ApiClient apiClient) {
-        return new PhotoManager(apiClient);
+    PhotoManager providesPhotosManager(FlickrService flickrService) {
+        return new PhotoManager(flickrService);
     }
 
     @Provides
