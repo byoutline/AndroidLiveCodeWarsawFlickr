@@ -9,5 +9,6 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
+    <string name="check_your_flickr_key">No photos returned. Please check if you pasted your Flickr Api key to com.byoutline.androidlivecodewarsawflickr.api.FlickrKey class</string>
 
 </resources>

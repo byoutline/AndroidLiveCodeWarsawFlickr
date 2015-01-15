@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.byoutline.androidlivecodewarsawflickr.App;
 import com.byoutline.androidlivecodewarsawflickr.R;
@@ -16,6 +17,7 @@ import com.byoutline.androidlivecodewarsawflickr.adapters.PhotosAdapter;
 import com.byoutline.androidlivecodewarsawflickr.events.PhotoFetchFailedEvent;
 import com.byoutline.androidlivecodewarsawflickr.events.RecentPhotosFetchedEvent;
 import com.byoutline.androidlivecodewarsawflickr.managers.PhotoManager;
+import com.byoutline.androidlivecodewarsawflickr.model.FlickrResponse;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 
@@ -23,6 +25,7 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import timber.log.Timber;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -98,7 +101,14 @@ public class PlaceholderFragment extends Fragment {
 
     @Subscribe
     public void onPhotosFetched(RecentPhotosFetchedEvent event) {
-        photosAdapter.setData(event.getResponse().photos.photo);
+        FlickrResponse response = event.getResponse();
+        if(response.photos == null) {
+            String msg = getActivity().getString(R.string.check_your_flickr_key);
+            Timber.e("\\/\n" + msg + "\n/\\");
+            Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+            return;
+        }
+        photosAdapter.setData(response.photos.photo);
         swipeRefreshLayout.setRefreshing(false);
     }
 
